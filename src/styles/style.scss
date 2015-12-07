@@ -1,18 +1,28 @@
 .canvasWrapper{
-  display:flex;
+  display: -webkit-flex;
+  display: flex;
   align-items: center;
   justify-content: space-between;
 }
 .canvas{
   flex:1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-box-flex: 1;
   margin:4px;
 }
 .canvasfill{
   height: 200px;
   flex:1;
+  -moz-box-flex: 1;
+  -webkit-box-flex: 1;
+  -webkit-box-flex: 1;
 }
 .canvas2{
   flex:2;
+  -moz-box-flex: 2;
+  -webkit-box-flex: 2;
+  -webkit-box-flex: 2;
   margin:3px;
 }
 .canvas-state{
