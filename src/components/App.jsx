@@ -89,7 +89,7 @@ const App = React.createClass({
             </div>
 
             <div className="canvasfill">
-              <DrawableCanvas {...ops1}/>
+              <DrawableCanvas {...ops5}/>
             </div>
           </div>
 
@@ -141,6 +141,15 @@ let ops4 = {
   lineWidth: 4,
   canvasStyle: {
     backgroundColor: "#ff0000",
+    borderColor: "#786B6B",
+    borderStyle: "solid"
+  }
+};
+let ops5 = {
+  brushColor: "#000000",
+  lineWidth: 4,
+  canvasStyle: {
+    backgroundColor: "#FFFFFF",
     borderColor: "#786B6B",
     borderStyle: "solid"
   }
