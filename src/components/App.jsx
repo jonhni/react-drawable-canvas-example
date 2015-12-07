@@ -3,46 +3,46 @@ const React = require('react');
 const DrawableCanvas = require('./DrawableCanvas.jsx');
 require('../styles/style.scss');
 
-const App = React.createClass({
+const App = React.createClass( {
   getInitialState: function() {
     return {
-      brushColor: "#000000",
+      brushColor: '#000000',
       lineWidth: 4,
       canvasStyle: {
-        backgroundColor: "#00FFDC"
+        backgroundColor: '#00FFDC'
 
       },
       clear: false
     };
   },
-  handleOnClickClear(){
+  handleOnClickClear() {
     this.setState({
       clear: true
     });
   },
-  handleOnClickChangeColorYellow(){
+  handleOnClickChangeColorYellow() {
     this.setState({
-      brushColor: "#ffff00",
+      brushColor: '#FFFF00',
       clear: false
     });
   },
-  handleOnClickChangeColorBlack(){
+  handleOnClickChangeColorBlack() {
     this.setState({
-      brushColor: "#000000",
+      brushColor: '#000000',
       clear: false
     });
   },
-  handleOnClickChangBgToRed(){
+  handleOnClickChangBgToRed() {
     let newstate = this.state;
-    newstate.canvasStyle.backgroundColor = "#FF0000";
+    newstate.canvasStyle.backgroundColor = '#FF0000';
     newstate.clear = false;
     this.setState({
       newstate
     });
   },
-  handleOnClickChangBgToBlue(){
+  handleOnClickChangBgToBlue() {
     let newstate = this.state;
-    newstate.canvasStyle.backgroundColor = "#00FFDC";
+    newstate.canvasStyle.backgroundColor = '#00FFDC';
     newstate.clear = false;
     this.setState({
       newstate
@@ -51,9 +51,9 @@ const App = React.createClass({
   render() {
     return (
       <div>
-        <div className="canvas-state">
+        <div className='canvas-state'>
         <p>Using style on state</p>
-        <div className="button-bar">
+        <div className='button-bar'>
           <button onClick={this.handleOnClickClear}>Clear all</button>
           <button onClick={this.handleOnClickChangeColorYellow}>Set color to yellow</button>
           <button onClick={this.handleOnClickChangeColorBlack}>Set color to black</button>
@@ -62,33 +62,33 @@ const App = React.createClass({
         </div>
         <DrawableCanvas {...this.state} />
         </div>
-          <div className="canvasWrapper">
-            <div className="canvas">
+          <div className='canvasWrapper'>
+            <div className='canvas'>
               <DrawableCanvas {...ops} />
             </div>
 
-            <div className="canvas">
+            <div className='canvas'>
               <DrawableCanvas {...ops1} />
             </div>
 
-            <div className="canvas2">
+            <div className='canvas2'>
               <DrawableCanvas {...ops2}/>
             </div>
 
-            <div className="canvas">
+            <div className='canvas'>
               <DrawableCanvas {...ops3}/>
             </div>
 
-            <div className="canvas">
+            <div className='canvas'>
               <DrawableCanvas {...ops4}/>
             </div>
           </div>
-          <div className="canvasWrapper">
-            <div className="canvasfill">
+          <div className='canvasWrapper'>
+            <div className='canvasfill'>
               <DrawableCanvas {...ops4}/>
             </div>
 
-            <div className="canvasfill">
+            <div className='canvasfill'>
               <DrawableCanvas {...ops5}/>
             </div>
           </div>
@@ -99,59 +99,59 @@ const App = React.createClass({
 });
 
 let ops = {
-  brushColor: "#800909",
+  brushColor: '#800909',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#00FFDC",
-    borderColor: "#786B6B",
-    borderStyle: "solid"
+    backgroundColor: '#00FFDC',
+    borderColor: '#786B6B',
+    borderStyle: 'solid'
   }
 };
 let ops1 = {
-  brushColor: "#0033cc",
+  brushColor: '#0033CC',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#00ff00",
-    borderColor: "#786B6B",
-    borderStyle: "solid"
+    backgroundColor: '#00FF00',
+    borderColor: '#786B6B',
+    borderStyle: 'solid'
   }
 };
 let ops2 = {
-  brushColor: "#00ffff",
+  brushColor: '#00FFFF',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#ffff00",
-    borderColor: "#786B6B",
-    borderStyle: "solid",
-    borderRadius:"90px"
+    backgroundColor: '#FFFF00',
+    borderColor: '#786B6B',
+    borderStyle: 'solid',
+    borderRadius: '90px'
   }
 };
 let ops3 = {
-  brushColor: "#ffffff",
+  brushColor: '#FFFFFF',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#ff66ff",
-    borderColor: "#786B6B",
-    borderStyle: "solid",
-    borderRadius:"70px"
+    backgroundColor: '#FF66FF',
+    borderColor: '#786B6B',
+    borderStyle: 'solid',
+    borderRadius: '70px'
   }
 };
 let ops4 = {
-  brushColor: "#333300",
+  brushColor: '#333300',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#ff0000",
-    borderColor: "#786B6B",
-    borderStyle: "solid"
+    backgroundColor: '#ff0000',
+    borderColor: '#786B6B',
+    borderStyle: 'solid'
   }
 };
 let ops5 = {
-  brushColor: "#000000",
+  brushColor: '#000000',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: "#FFFFFF",
-    borderColor: "#786B6B",
-    borderStyle: "solid"
+    backgroundColor: '#FFFFFF',
+    borderColor: '#786B6B',
+    borderStyle: 'solid'
   }
 };
 
