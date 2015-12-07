@@ -1,6 +1,6 @@
 const React = require('react');
-// const DrawableCanvas = require('react-drawable-canvas');
-const DrawableCanvas = require('./DrawableCanvas.jsx');
+const DrawableCanvas = require('react-drawable-canvas');
+// const DrawableCanvas = require('./DrawableCanvas.jsx');
 require('../styles/style.scss');
 
 const App = React.createClass( {
