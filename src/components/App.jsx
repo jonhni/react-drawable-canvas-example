@@ -63,13 +63,7 @@ const App = React.createClass( {
         <DrawableCanvas {...this.state} />
         </div>
           <div className='canvasWrapper'>
-            <div className='canvas'>
-              <DrawableCanvas {...ops} />
-            </div>
 
-            <div className='canvas'>
-              <DrawableCanvas {...ops1} />
-            </div>
 
             <div className='canvas2'>
               <DrawableCanvas {...ops2}/>
@@ -137,10 +131,10 @@ let ops3 = {
   }
 };
 let ops4 = {
-  brushColor: '#333300',
+  brushColor: '#84ff99',
   lineWidth: 4,
   canvasStyle: {
-    backgroundColor: '#ff0000',
+    backgroundColor: '#ff7d7d',
     borderColor: '#786B6B',
     borderStyle: 'solid'
   }
