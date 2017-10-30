@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
+import assign from 'object-assign'
 
 class DrawableCanvas extends React.Component {
 
@@ -34,51 +35,52 @@ class DrawableCanvas extends React.Component {
         backgroundColor: '#00FFDC'
       },
       clear: false
-    }
+    };
   }
 
-  static isMobile(){
-    return (
-      /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
-    );
+  handleOnTouchStart (e) {
+    const rect = this.state.canvas.getBoundingClientRect();
+    this.state.context.beginPath();
+    this.setState({
+      lastX: e.targetTouches[0].pageX - rect.left,
+      lastY: e.targetTouches[0].pageY - rect.top,
+      drawing: true
+    });
   }
 
   handleOnMouseDown(e){
     const rect = this.state.canvas.getBoundingClientRect();
     this.state.context.beginPath();
-    if(DrawableCanvas.isMobile()){
-      this.setState({
-        lastX: e.targetTouches[0].pageX - rect.left,
-        lastY: e.targetTouches[0].pageY - rect.top
-      });
-    } else{
-      this.setState({
-        lastX: e.clientX - rect.left,
-        lastY: e.clientY - rect.top
-      });
-    }
 
     this.setState({
+      lastX: e.clientX - rect.left,
+      lastY: e.clientY - rect.top,
       drawing: true
     });
   }
 
-  handleOnMouseMove(e){
+  handleOnTouchMove (e) {
+    if (this.state.drawing) {
+      const rect = this.state.canvas.getBoundingClientRect();
+      const lastX = this.state.lastX;
+      const lastY = this.state.lastY;
+      let currentX = e.targetTouches[0].pageX - rect.left;
+      let currentY = e.targetTouches[0].pageY - rect.top;
+      this.draw(lastX, lastY, currentX, currentY);
+      this.setState({
+        lastX: currentX,
+        lastY: currentY
+      });
+    }
+  }
 
+  handleOnMouseMove(e){
     if(this.state.drawing){
       const rect = this.state.canvas.getBoundingClientRect();
       const lastX = this.state.lastX;
       const lastY = this.state.lastY;
-      let currentX;
-      let currentY;
-      if(DrawableCanvas.isMobile()){
-        currentX = e.targetTouches[0].pageX - rect.left;
-        currentY = e.targetTouches[0].pageY - rect.top;
-      } else{
-        currentX = e.clientX - rect.left;
-        currentY = e.clientY - rect.top;
-      }
-
+      let currentX = e.clientX - rect.left;
+      let currentY = e.clientY - rect.top;
 
       this.draw(lastX, lastY, currentX, currentY);
       this.setState({
@@ -100,7 +102,7 @@ class DrawableCanvas extends React.Component {
     newContext.lineWidth = this.props.lineWidth;
     this.setState({
       context: newContext
-      });
+    });
     this.state.context.moveTo(lX, lY);
     this.state.context.lineTo(cX, cY);
     this.state.context.stroke();
@@ -116,16 +118,16 @@ class DrawableCanvas extends React.Component {
     const defaults = DrawableCanvas.getDefaultStyle();
     const custom = this.props.canvasStyle;
 
-    return Object.assign({}, defaults, custom);
+    return assign({}, defaults, custom);
   }
 
   render() {
     return (
       <canvas style = {this.canvasStyle()}
         onMouseDown = {this.handleOnMouseDown.bind(this)}
-        onTouchStart = {this.handleOnMouseDown.bind(this)}
+        onTouchStart = {this.handleOnTouchStart.bind(this)}
         onMouseMove = {this.handleOnMouseMove.bind(this)}
-        onTouchMove = {this.handleOnMouseMove.bind(this)}
+        onTouchMove = {this.handleOnTouchMove.bind(this)}
         onMouseUp = {this.handleonMouseUp.bind(this)}
         onTouchEnd = {this.handleonMouseUp.bind(this)}
       >

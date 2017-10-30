@@ -18,7 +18,7 @@ var modules = {
       loaders: isProduction ? ['babel'] : ['react-hot', 'babel'],
       exclude: /node_modules/,
     },
-    { test: /\.scss$/, loader: "style!css!sass" }
+    { test: /\.css$/, loader: "style!css" }
   ]};
 
 

@@ -2,8 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import DrawableCanvas from 'react-drawable-canvas'; 
-//import DrawableCanvas from './DrawableCanvas.jsx';
-require('../styles/style.scss');
+// import DrawableCanvas from './DrawableCanvas.jsx';
+require('../styles/style.css');
 
 class App extends React.Component {
   constructor(props) {
